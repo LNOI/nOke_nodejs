@@ -1,0 +1,145 @@
+<div class="row box-shoes">
+    <div  class="col-8  sh-dt-lbox">
+        <div class="row justify-content-center">
+            <div class="col-5">
+                <img src="{{shoes.link_img.img1}}" width="100%" height="100%" alt="">
+            </div>
+            <div class="col-5">
+                <img src="{{shoes.link_img.img2}}" width="100%" height="100%" alt="">
+            </div>
+        </div>
+         <div class="row justify-content-center">
+            <div class="col-5">
+                <img src="{{shoes.link_img.img3}}" width="100%" height="100%" alt="">
+            </div>
+            <div class="col-5">
+                <img src="{{shoes.link_img.img4}}" width="100%" height="100%" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="col-4  sh-dt-rbox">
+        <div class="row">
+            <h2 id="name_shoes">{{shoes.name}}</h2>
+        </div>
+        <div class="row">
+            <h5 id="value_shoes">Price: {{shoes.value}}</h5>
+        </div>
+        <div class="row mt-4">
+            <h7>Select Size</h7>
+            {{#each shoes.size}}
+                    <div class="col-3"><button type="button" class="btn btn-outline-secondary size_shoes" id="size_shoes" data-size="{{this}}">{{this}}</button></div>
+            {{/each}}
+        </div>
+        
+        {{#if acc.username}}   
+
+            <div class="row mt-5">
+                <button type="button" id="btn_buynow"  class="btn btn-primary">Buy Now</button>
+            </div>
+
+            <div class="row mt-2">
+                <button type="button" id="btn_addtobag"  class="btn btn-success">Add to Cart</button>
+            </div>
+
+        {{else}} 
+
+            <div class="row mt-4">
+                <button type="button" id="btn_signtobuy" class="btn btn-danger">Please Sign in to Buy</button>
+            </div>
+
+        {{/if}}
+
+        <div class="row mt-2">
+            <button type="button"  id="btn_favorite" class="btn btn-outline-info">Favourite <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+        </svg></button>
+        </div>
+         <div class="row mt-4">
+            <p>{{shoes.description}}</p>
+        </div>
+    </div>
+</div>
+<script>
+    var _size=27
+    const btn_signtobuy=document.getElementById("btn_signtobuy")
+
+    if(btn_signtobuy){
+        btn_signtobuy.addEventListener("click",()=>{
+            window.location.replace("/login");
+        })
+    }
+    const btn_buynow=document.getElementById('btn_buynow')
+    if(btn_buynow){
+        btn_buynow.addEventListener("click",()=>{
+            window.location.replace("/my/payment");
+        })
+    }
+    const arr_size=document.getElementsByClassName("size_shoes")
+  
+    Array.from(arr_size).forEach(size=>{
+        size.addEventListener("click",()=>{
+            _size=size.innerHTML;
+        })
+    })
+    const s_name=document.getElementById('name_shoes').innerHTML
+    const s_price=document.getElementById('value_shoes').innerHTML
+    const btn_addtobag=document.getElementById("btn_addtobag")
+    if (btn_addtobag){
+         btn_addtobag.addEventListener("click",()=>{
+         
+         $.ajax({  
+           url:'/storage/addtocart',  
+           method:'post',  
+           dataType:'json',  
+           data:{
+            'name':s_name,
+            'size':_size,
+            'price': s_price,
+            },  
+           success:function(response){ 
+               if(response.msg=='success'){  
+                    increaseCart(response.name,response.size,response.price,response.index)
+               }else{  
+                   alert('some error occurred try again');  
+               }  
+           },  
+           error:function(response){  
+               alert('server error occured')  
+           }  
+       });  
+    })
+
+    }
+   
+    function increaseCart(name,size,price,index){
+        document.getElementById("number_cart").innerHTML=parseInt(document.getElementById("number_cart").innerHTML)+1
+        const bd=document.getElementsByClassName("offcanvas-body")[0]
+        bd.innerHTML=bd.innerHTML+ `
+            <div class="card mb-3" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img width="100%" height="100%" src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/d3aa4498-0d34-4166-b047-5a76d927a0dd/jordan-break-slides-QmwKlG.png" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">`+name+`</h5>
+                    <p class="card-text">Size `+size+` </p>
+                    <p class="card-text"><small class="text-muted">`+price+`</small></p>
+                    
+                    <p style="font-size: 16px;" class="card-text float-start"> <a href="#/my/pay">Pay</a></p>
+                    
+                    <svg class="float-end mt-1 btn-delete-cart" data-id-cart="`+index+`" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                      <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                    </svg>
+                    </div>
+  
+                  </div>
+                </div>
+            </div>
+        `
+    }
+    
+
+
+
+</script>

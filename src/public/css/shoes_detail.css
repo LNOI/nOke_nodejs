@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap');
+.box-shoes{
+    font-family: 'Poppins', sans-serif;
+    background-color:#f6f6f6 ;
+}
+
+.sh-dt-lbox, .sh-dt-rbox{
+    height: 800px;
+}
+.sh-dt-lbox .row{
+    height: 350px;
+}
+
+#name_shoes{
+    margin-top: 50px;
+}
+#btn_addtobag,#btn_buynow, #btn_signtobuy{
+    width: 80%;
+    border-radius: 20px;
+    margin: auto;
+    border: none;
+}
+#btn_favorite{
+    width: 80%;
+    border-radius: 20px;
+    margin: auto;
+}
+#value_shoes{
+    margin-top: 30px;
+    size: 20px;
+}
+#size_shoes{
+    margin-top: 10px;
+}

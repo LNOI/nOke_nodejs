@@ -1,0 +1,37 @@
+<div class="row justify-content-center mt-4">
+    <div class="col-4 mt-4 ">
+    <form method="POST" action="/signup">
+        {{#if notify_success}}
+        <div class="mb-3">
+            <div class="p-1 mb-1 bg-primary text-white notifcation">Create account success</div>
+        </div>
+        {{/if}}
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        {{#if notify_user}}
+        <div class="mb-3">
+            <div class="p-1 mb-1 bg-danger text-white notifcation">Username already exists</div>
+        </div>
+        {{/if}}
+       
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input name="username" type="username" class="form-control" id="username" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label  for="password" class="form-label">Password</label>
+            <input name="password" type="password" class="form-control" id="password">
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="/login" class="float-end" style="text-decoration:underline;">Sign in</a>
+        </form>
+    </div>
+</div>
+

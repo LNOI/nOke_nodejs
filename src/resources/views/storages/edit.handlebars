@@ -1,0 +1,69 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Value</th>
+      <th scope="col">Created Date</th>
+      <th scope="col">Update Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each shoes}}
+    <tr>
+      <th scope="row">{{ sum @index 1 }}</th>
+      <td>{{this.name}}</td>
+      <td>{{this.value}}</td>
+      <td>{{this.createAt}}</td>
+      <td>{{this.updateAt}}</td>
+      <td><a href="/storage/update/{{this._id}}">Update</a> </td>
+      <td><a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-delete_id_shoes="{{this._id}}">Delete</a></td>
+
+
+    </tr>
+    {{/each}}
+  </tbody>
+<form action="" method="POST" name="form-delete-shoes"></form>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn xóa cái đôi giày này khum</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        xxxx
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" id="btn-delete-shoes" data-bs-dismiss="modal">Xóa</button>
+        <button type="button" class="btn btn-primary">Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+</table>
+<script>
+  
+const exampleModal = document.getElementById('exampleModal')
+var recipient=''
+exampleModal.addEventListener('show.bs.modal', event => {
+  // Button that triggered the modal
+  const button = event.relatedTarget
+  // Extract info from data-bs-* attributes
+  recipient = button.getAttribute('data-bs-delete_id_shoes')
+  const modalTitle = exampleModal.querySelector('.modal-body')
+  id_shoes=recipient;
+  modalTitle.innerHTML= `New message to ${recipient}`
+})
+var formdelete=document.forms['form-delete-shoes']
+document.getElementById("btn-delete-shoes").addEventListener("click",(e)=>{
+    formdelete.action="/storage/delete/"+recipient+"?_method=DELETE"
+    formdelete.submit()
+})
+
+</script>

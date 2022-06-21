@@ -1,0 +1,72 @@
+<div class="mt-4">
+    <form method="POST" action="/storage/update/{{shoes._id}}?_method=PUT"> 
+         <div class="mb-3" >
+            <label for="nameShoes" class="form-label">Name Shoes</label>
+            <input name="name" value="{{shoes.name}}" type="text" class="form-control" id="nameShoes"  required>
+        </div>
+        <div class="mb-3">
+            <label for="valueShoes" class="form-label">Price Shoes</label>
+            <input name="value" type="text" value="{{shoes.value}}" class="form-control" id="nameShoes"  required >
+        </div>
+        <div class="mb-3">
+            <label for="sizeShoes " class="form-label">Size Shoes</label>
+            <div class="form-check form-check-inline">
+            <input name="size"  class="form-check-input" type="checkbox" id="inlineCheckbox1" value="27"  required>
+            <label class="form-check-label" for="inlineCheckbox1">27</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input name="size" class="form-check-input" type="checkbox" id="inlineCheckbox2" value="28">
+            <label class="form-check-label" for="inlineCheckbox2">28</label>
+            </div>
+
+             <div class="form-check form-check-inline">
+            <input name="size" class="form-check-input" type="checkbox" id="inlineCheckbox2" value="29">
+            <label class="form-check-label" for="inlineCheckbox2">29</label>
+            </div>
+
+             <div class="form-check form-check-inline">
+            <input name="size" class="form-check-input" type="checkbox" id="inlineCheckbox2" value="30">
+            <label class="form-check-label" for="inlineCheckbox2">30</label>
+            </div>
+
+             <div class="form-check form-check-inline">
+            <input name="size" class="form-check-input" type="checkbox" id="inlineCheckbox2" value="31">
+            <label class="form-check-label" for="inlineCheckbox2">31</label>
+            </div>
+             <div class="form-check form-check-inline">
+            <input name="size" class="form-check-input" type="checkbox" id="inlineCheckbox2" value="32">
+            <label class="form-check-label" for="inlineCheckbox2">32</label>
+            </div>
+             <div class="form-check form-check-inline">
+            <input name="size" class="form-check-input" type="checkbox" id="inlineCheckbox2" value="33">
+            <label class="form-check-label" for="inlineCheckbox2">33</label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="imgShoes" class="form-label">Link Image 1</label>
+            <input name="img1" type="text" value="{{shoes.link_img.img1}}" class="form-control" id="imgShoes"  required>
+        </div>
+        <div class="mb-3">
+            <label for="imgShoes" class="form-label">Link Image 2</label>
+            <input name="img2" type="text" value="{{shoes.link_img.img2}}" class="form-control" id="imgShoes"  required>
+        </div>
+         <div class="mb-3">
+            <label for="imgShoes" class="form-label">Link Image 3</label>
+            <input name="img3" type="text"  value="{{shoes.link_img.img3}}" class="form-control" id="imgShoes"  required >
+        </div>
+        <div class="mb-3">
+            <label for="imgShoes" class="form-label">Link Image 4</label>
+            <input name="img4" type="text" value="{{shoes.link_img.img4}}" class="form-control" id="imgShoes"  required>
+        </div>
+         <div class="mb-3">
+            <label for="descriptionShoes" class="form-label">Description</label>
+            <input name="description" type="text" value="{{shoes.description}}" class="form-control" id="descriptionShoes"  >
+        </div>
+       
+       
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>

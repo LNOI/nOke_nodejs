@@ -1,0 +1,29 @@
+h1{
+    color: red;
+}
+.pagination{
+    
+    margin: auto;
+}
+#logo{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    top: -15px;
+    left: 0px;
+}
+#input_search{
+    margin-right: 5rem;
+}
+
+.notifcation{
+    width: 80%;
+    border-radius: 10px;
+}
+.number_order{
+    top: -20px;
+    left: 15px;
+}
+.payment{
+    margin: auto;
+}

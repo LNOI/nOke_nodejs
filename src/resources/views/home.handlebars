@@ -1,0 +1,38 @@
+<div class="mt-4">
+    <div class="row justify-content-center">
+            {{#each result.result}}
+              <div class="col-3 mt-4">
+                <div class="card" style="width: 18rem;">
+                <img src="{{this.link_img.img1}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{this.name}}</h5>
+                    <p class="card-text">${{this.value}}</p>
+                    <a href="shoes/{{this.slug}}" class="btn btn-primary">View Shoes</a>
+                </div>
+                </div>
+                </div>
+            {{/each}}
+    </div>
+    <div class="row mt-4 ">
+            <nav aria-label="Page navigation example" class="pagination">
+                <ul class="pagination">
+                    <li class="page-item">
+                    <a class="page-link" href="/?page={{result.previous.page}}&limit={{result.previous.limit}}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    </li>
+                    {{#each result.page}}
+                    <li class="page-item"><a class="page-link" href="/?page={{sum @index 1}}&limit=8">{{ sum @index 1}}</a></li>
+                    {{/each}}
+                    <li class="page-item">
+                    <a class="page-link" href="/?page={{result.next.page}}&limit={{result.next.limit}}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    
+
+</div>
+
