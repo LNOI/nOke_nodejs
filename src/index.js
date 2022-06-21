@@ -7,6 +7,7 @@ const session = require('express-session')
 var methodOverride = require('method-override')
 const education= require("./config/db/index")
 education.connect()
+
 const app = express()
 
 app.engine('handlebars',engine.engine({

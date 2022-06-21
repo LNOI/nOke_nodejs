@@ -5,7 +5,6 @@ const { mutipleMongooseToObject} = require("../../utils/mongoosedb")
 class HomeController{
     index(req,res,next){
         const search=req.query.search
-        
         const page=parseInt(req.query.page)?parseInt(req.query.page):1
         const limit=parseInt(req.query.limit)?parseInt(req.query.limit):8
         const startIndex=(page-1)*limit
