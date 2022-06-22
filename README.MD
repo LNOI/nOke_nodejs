@@ -31,7 +31,21 @@ http://127.0.0.1
 
 ## Image related to nOke store
 
-![Alt text](./src/public/img/main1.png "Optional title")
+View Home
+![Alt text](./src/public/img/main1.png "home")
+
+View Login
+![Alt text](./src/public/img/login.png "home")
+
+View Cart
+![Alt text](./src/public/img/main.png "home")
+
+View add product
+![Alt text](./src/public/img/add.png "home")
+
+View edit product
+![Alt text](./src/public/img/mystore.png "home")
+
 
 
 
