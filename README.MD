@@ -29,8 +29,9 @@ docker-compose up --build
 http://127.0.0.1
 ```
 
-## 
+## Image related to nOke store
 
+![Alt text](./src/public/img/main1.png "Optional title")
 
 
 
