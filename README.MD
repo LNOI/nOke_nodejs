@@ -2,8 +2,15 @@
 ## _The Last Markdown Editor, thanhloiuit (alias LNOI )_
 
 ## Introduce
-nOke store is the web , it help client purchare shoes in web and administrator of nOke store esier to manage shoes( number, link view shoes,add, update, delete shoes easier)
-Client can add shoes to cart before buy
+nOke store is a website that makes it easy for users to search and buy products (shoes) from the website, they can buy immediately or add to cart if they like.
+nOke store helps store owners easily manage products
+- Add products
+- Update product
+- Delete product
+
+You can use the account below to see admin rights:
+- [email] admin@gmail.com
+- [password] admin
 
 ## Tech
 - [NodeJs] framework to code
@@ -22,6 +29,7 @@ docker-compose up --build
 http://127.0.0.1
 ```
 
+## 
 
 
 
