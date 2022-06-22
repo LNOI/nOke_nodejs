@@ -76,13 +76,18 @@ class StorageController{
                 const cart=acc.cart
                 cart.push(req.body.name+"-"+req.body.size+"-"+req.body.price)
                 Accounts.findOneAndUpdate({username:req.session.viewUsername},{cart:cart}).then(()=>{
-                    res.json({
-                        msg:"success",
-                        name:req.body.name,
-                        size:req.body.size,
-                        price:req.body.price,
-                        index:cart.length-1
-                    })
+                    Shoes.findOne({name: req.body.name}).then(shoes=>{
+                       
+                        res.json({
+                            msg:"success",
+                            linkcart:shoes.link_img.img1,
+                            name:req.body.name,
+                            size:req.body.size,
+                            price:req.body.price,
+                            index:cart.length-1
+                        })
+
+                    }).catch(next)
                 }).catch(next)
         
                
